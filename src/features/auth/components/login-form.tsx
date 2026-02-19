@@ -13,13 +13,13 @@ import {
   FieldGroup,
   FieldLabel,
 } from "@/components/ui/field"
+import { Spinner } from "@/components/ui/spinner"
 import { Input } from "@/components/ui/input"
 import { Link } from "@tanstack/react-router"
 import * as z from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { login, loginWithGoogle } from "@/lib/api/auth"
-import { Spinner } from "./ui/spinner"
+import { login, loginWithGoogle } from "@/features/auth/api"
 import { useGoogleLogin } from "@react-oauth/google"
 import { useRouter } from "@tanstack/react-router"
 
@@ -34,7 +34,7 @@ export function LoginForm({
   ...props
 }: React.ComponentProps<"div">) {
   const router = useRouter()
-  const {register, handleSubmit, formState: {isLoading, errors}} = useForm({resolver: zodResolver(UserEmailLoginSchema)})
+  const {register, handleSubmit, formState: {isLoading}} = useForm({resolver: zodResolver(UserEmailLoginSchema)})
 
   const onSubmit = async (data: z.infer<typeof UserEmailLoginSchema>) => {
     await login(data)

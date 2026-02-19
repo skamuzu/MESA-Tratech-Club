@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
   Code,
@@ -6,8 +5,6 @@ import {
   Bot,
   CheckCircle2,
   Sparkles,
-  Trophy,
-  ArrowRight,
 } from "lucide-react"; 
 
 

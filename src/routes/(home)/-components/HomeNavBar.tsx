@@ -3,8 +3,12 @@ import { NAVIGATION_LINKS } from '@/lib/constants'
 import { Button } from '../../../components/ui/button'
 import { Link } from '@tanstack/react-router'
 import HomeSheet from './HomeSheet'
+import UserAvatar from '@/features/auth/components/userAvatar'
+import { useUser } from '@/features/auth/queries'
+
 
 export default function HomeNavBar() {
+  const { data } = useUser()
   return (
     <nav className="flex justify-between bg-navbar items-center shadow-xl border-b-muted text-2xl p-4">
       <div className="flex-1">
@@ -22,6 +26,12 @@ export default function HomeNavBar() {
           </Button>
         ))}
       </div>
+      {data ? 
+      <div className='flex-1 flex justify-end items-center'>
+        <UserAvatar/>
+        <HomeSheet />        
+      </div>
+      : 
       <div className="flex flex-1 space-x-4  items-center justify-end">
         <Link to="/sign-in">
           <Button variant={'link'} className="text-lg text-muted-foreground cursor-pointer">
@@ -34,7 +44,8 @@ export default function HomeNavBar() {
         </Button>
         </Link>
         <HomeSheet />
-      </div>
+      </div> }
+    
     </nav>
   )
 }

@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft } from 'lucide-react'
 import { GraduationCap } from 'lucide-react'
-import { LoginForm } from '@/components/login-form'
+import { LoginForm  } from '@/features/auth/components/login-form'
 
 export const Route = createFileRoute('/(auth)/sign-in')({
   component: RouteComponent,

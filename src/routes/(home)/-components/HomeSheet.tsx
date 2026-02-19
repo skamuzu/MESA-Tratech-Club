@@ -23,9 +23,7 @@ const iconMap: Record<string, LucideIcon> = {
 const iconColors: Record<string, string> = {
   "Courses": "from-purple-500 to-purple-600",
   "Projects": "from-green-500 to-green-600",
-  "Home": "from-blue-500 to-blue-600",
-  "Admin": "from-red-500 to-red-600",
-
+  "Resources": "from-blue-500 to-blue-600",
 };
 
 export default function HomeSheet() {
@@ -34,7 +32,7 @@ export default function HomeSheet() {
     <Sheet>
       <SheetTrigger className="lg:hidden" aria-label="Open menu">
         <div className="p-2 hover:bg-zinc-800/50 rounded-lg transition-colors">
-          <MenuIcon className="text-white h-6 w-6" />
+          <MenuIcon className="text-muted-foreground h-5 w-5" />
         </div>
       </SheetTrigger>
       <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-zinc-950 border-zinc-800">
@@ -48,8 +46,8 @@ export default function HomeSheet() {
         
         <nav className="flex flex-col gap-3 p-4">
           {NAVIGATION_LINKS.map((link) => {
-            const Icon = iconMap[link.name] || Home;
-            const gradient = iconColors[link.name] || "from-blue-500 to-blue-600";
+            const Icon = iconMap[link.name];
+            const gradient = iconColors[link.name];
             
             return (
               <Link

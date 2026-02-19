@@ -17,9 +17,9 @@ import { Link } from "@tanstack/react-router"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import { registration } from "@/lib/api/auth"
+import { registration, loginWithGoogle } from "@/features/auth/api"
 import { useGoogleLogin } from "@react-oauth/google"
-import {loginWithGoogle } from "@/lib/api/auth"
+
 import { useRouter } from "@tanstack/react-router"
 
 const UserEmailRegistrationSchema = z.object({

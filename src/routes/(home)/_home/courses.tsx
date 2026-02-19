@@ -1,18 +1,18 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useCourses } from '@/lib/queries/courses'
+import { useCourses } from '@/features/courses/queries'
 import {
   Card,
   CardContent,
   CardDescription,
   CardTitle,
 } from '@/components/ui/card'
-import { ArrowRight, Trophy } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
 
 
 export const Route = createFileRoute('/(home)/_home/courses')({
-  component: RouteComponent,
+  component: RouteComponent
 })
 
 function RouteComponent() {
@@ -22,7 +22,7 @@ function RouteComponent() {
       <section className="relative flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 overflow-hidden">
         <div className="absolute inset-0 bg-linear-to-b from-zinc-900/50 to-zinc-950"></div>
         <div className="absolute inset-0 opacity-[0.04] grid-bg"></div>
-        <div className="relative z-10 max-w-6xl mx-auto text-center flex flex-col gap-2 ">
+        <div className="relative z-10 max-w-6xl mx-auto text-center flex flex-col gap-2  ">
           <h1 className=" text-6xl md:text-7xl lg:text-8xl font-bold p-2 mx-auto">
             <span className=" bg-linear-to-r from-white to-white/40 text-transparent bg-clip-text">
               Courses
@@ -31,14 +31,14 @@ function RouteComponent() {
           <p className='text-muted-foreground text-xl'>Deep-dive into professional development with courses designed to transform your skills</p>
         </div>
       </section>
-      <div className="grid max-w-7xl grid-cols-2 mx-auto container gap-4">
+      <div className="grid max-w-7xl grid-cols-1 p-2 md:grid-cols-2 mx-auto container gap-4">
         {data &&
           data.map((course) => (
             <Card>
               <img
                 src={course.image}
                 alt="course-image"
-                className="w-full h-full "
+                className="w-full h-full rounded-2xl "
               />
               <CardContent className='flex flex-col gap-2'>
                 <CardTitle className='font-bold text-2xl'>{course.name}</CardTitle>

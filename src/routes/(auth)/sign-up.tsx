@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft, GraduationCap, Sparkles } from 'lucide-react'
-import { SignupForm } from '@/components/signup-form'
+import { SignupForm } from '@/features/auth/components/signup-form'
 
 export const Route = createFileRoute('/(auth)/sign-up')({
   component: RouteComponent,
