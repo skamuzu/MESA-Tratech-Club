@@ -1,12 +1,14 @@
 import { api } from "@/lib/api-client";
-import type { Course } from "./types";
+import type { CourseDetail, CourseListItem } from "./types";
 
-export async function getCourses(): Promise<Course[]> {
+
+
+export async function getCourses(): Promise<CourseListItem[]> {
     const response = await api.get("/courses/");
-    return response.data;
+    return response.data
 }
 
-export async function getCourse(slug: string): Promise<Course | undefined> {
+export async function getCourse(slug: string): Promise<CourseDetail> {
     const response = await api.get(`/courses/${slug}`)
     return response.data
 }

@@ -1,13 +1,18 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useCourse } from '@/features/courses/queries'
-import { queryOptions} from "@tanstack/react-query"
+import { getCourse } from '@/features/courses/api'
 
 export const Route = createFileRoute('/(home)/_home/course/$course')({
   component: RouteComponent,
-  
-  }
-)
+  loader: async ({ params, context }) => {
+    const course = await context.queryClient.fetchQuery({
+      queryKey: ['courses', params.course],
+      queryFn: () => getCourse(params.course),
+    })
+    return course
+  },
+})
 
 function RouteComponent() {
-  return <div>Hello "/(home)/_home/course/$course"!</div>
+  const course = Route.useLoaderData()
+  return <div>{course.name}</div>
 }

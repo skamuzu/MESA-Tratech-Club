@@ -4,7 +4,7 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { MenuIcon, Home, ArrowRight, GraduationCap, FolderOpen, Rocket,  type LucideIcon } from "lucide-react";
+import { MenuIcon, ArrowRight, GraduationCap, FolderOpen, Rocket,  type LucideIcon } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { NAVIGATION_LINKS } from "@/lib/constants/navigation";
 import Logo from "@/components/Logo";

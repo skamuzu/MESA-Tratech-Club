@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useCourses } from '@/features/courses/queries'
 import {
   Card,
   CardContent,
@@ -9,14 +8,23 @@ import {
 import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
+import { getCourses } from '@/features/courses/api'
 
 
 export const Route = createFileRoute('/(home)/_home/courses')({
-  component: RouteComponent
+  component: RouteComponent,
+  loader: async ({context}) => {
+    const courses = await context.queryClient.fetchQuery({
+      queryKey: ["courses"],
+      queryFn: getCourses
+    })
+
+    return courses
+  }
 })
 
 function RouteComponent() {
-  const { data, error } = useCourses()
+  const data = Route.useLoaderData()
   return (
     <>
       <section className="relative flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 overflow-hidden">
@@ -57,7 +65,6 @@ function RouteComponent() {
               </CardContent>
             </Card>
           ))}
-        {error && <div>{error.message}</div>}
       </div>
       <section className="py-16 md:py-24 lg:py-20 px-4 bg-zinc-950 my-8 border-t">
         <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
