@@ -1,5 +1,5 @@
 import { api } from "@/lib/api-client";
-import type { CourseDetail, CourseListItem } from "./types";
+import type { CourseDetail, CourseListItem, CourseWithModules } from "./types";
 
 
 
@@ -8,7 +8,12 @@ export async function getCourses(): Promise<CourseListItem[]> {
     return response.data
 }
 
-export async function getCourse(slug: string): Promise<CourseDetail> {
-    const response = await api.get(`/courses/${slug}`)
+export async function getCourse(course: string): Promise<CourseDetail> {
+    const response = await api.get(`/courses/${course}/`)
+    return response.data
+}
+
+export async function getCourseModules(course:string): Promise<CourseWithModules>{
+    const response = await api.get(`/courses/${course}/modules/`)
     return response.data
 }

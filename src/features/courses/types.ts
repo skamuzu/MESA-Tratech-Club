@@ -1,8 +1,3 @@
-export type CourseInfo = {
-  question: string
-  answer: string
-  answer_bullet_points?: string[]
-}
 
 export type Course = {
     id: string
@@ -13,9 +8,27 @@ export type Course = {
     image: string
     published: boolean
     slug: string,
-    courseInfo: CourseInfo[]
+    courseInfo?: CourseInfo[]
+}
+
+export type CourseInfo = {
+    question: string
+    answer: string
+    answerBulletPoints?: string[]
+}
+
+export type Module = {
+  name: string
+}
+
+export type CourseWithModules = {
+  id: string
+  name: string
+  slug: string
+  modules: Module[]
 }
 
 export type CourseListItem = Omit<Course, "courseInfo">
 
 export type CourseDetail = Course
+

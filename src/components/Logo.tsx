@@ -1,9 +1,10 @@
 import { Link } from "@tanstack/react-router"
+import { cn } from "@/lib/utils"
 
-const Logo = () => {
+const Logo = ({className}: {className? : string}) => {
   return (
     <Link to="/">
-    <img src="./logo.png" alt="Logo" className="w-12 h-12" />
+  <img src="/logo.png" alt="Logo" className={cn("w-12 h-12", className)}/>
     </Link>
   )
 }

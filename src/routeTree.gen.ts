@@ -15,6 +15,7 @@ import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
 import { Route as homeHomeIndexRouteImport } from './routes/(home)/_home/index'
 import { Route as homeHomeCoursesRouteImport } from './routes/(home)/_home/courses'
 import { Route as homeHomeCourseCourseRouteImport } from './routes/(home)/_home/course/$course'
+import { Route as codeCourseCourseLearnRouteImport } from './routes/(code)/course/$course/learn'
 
 const homeHomeRoute = homeHomeRouteImport.update({
   id: '/(home)/_home',
@@ -45,12 +46,18 @@ const homeHomeCourseCourseRoute = homeHomeCourseCourseRouteImport.update({
   path: '/course/$course',
   getParentRoute: () => homeHomeRoute,
 } as any)
+const codeCourseCourseLearnRoute = codeCourseCourseLearnRouteImport.update({
+  id: '/(code)/course/$course/learn',
+  path: '/course/$course/learn',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/sign-in': typeof authSignInRoute
   '/sign-up': typeof authSignUpRoute
   '/courses': typeof homeHomeCoursesRoute
   '/': typeof homeHomeIndexRoute
+  '/course/$course/learn': typeof codeCourseCourseLearnRoute
   '/course/$course': typeof homeHomeCourseCourseRoute
 }
 export interface FileRoutesByTo {
@@ -58,6 +65,7 @@ export interface FileRoutesByTo {
   '/sign-up': typeof authSignUpRoute
   '/courses': typeof homeHomeCoursesRoute
   '/': typeof homeHomeIndexRoute
+  '/course/$course/learn': typeof codeCourseCourseLearnRoute
   '/course/$course': typeof homeHomeCourseCourseRoute
 }
 export interface FileRoutesById {
@@ -67,13 +75,26 @@ export interface FileRoutesById {
   '/(home)/_home': typeof homeHomeRouteWithChildren
   '/(home)/_home/courses': typeof homeHomeCoursesRoute
   '/(home)/_home/': typeof homeHomeIndexRoute
+  '/(code)/course/$course/learn': typeof codeCourseCourseLearnRoute
   '/(home)/_home/course/$course': typeof homeHomeCourseCourseRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/sign-in' | '/sign-up' | '/courses' | '/' | '/course/$course'
+  fullPaths:
+    | '/sign-in'
+    | '/sign-up'
+    | '/courses'
+    | '/'
+    | '/course/$course/learn'
+    | '/course/$course'
   fileRoutesByTo: FileRoutesByTo
-  to: '/sign-in' | '/sign-up' | '/courses' | '/' | '/course/$course'
+  to:
+    | '/sign-in'
+    | '/sign-up'
+    | '/courses'
+    | '/'
+    | '/course/$course/learn'
+    | '/course/$course'
   id:
     | '__root__'
     | '/(auth)/sign-in'
@@ -81,6 +102,7 @@ export interface FileRouteTypes {
     | '/(home)/_home'
     | '/(home)/_home/courses'
     | '/(home)/_home/'
+    | '/(code)/course/$course/learn'
     | '/(home)/_home/course/$course'
   fileRoutesById: FileRoutesById
 }
@@ -88,6 +110,7 @@ export interface RootRouteChildren {
   authSignInRoute: typeof authSignInRoute
   authSignUpRoute: typeof authSignUpRoute
   homeHomeRoute: typeof homeHomeRouteWithChildren
+  codeCourseCourseLearnRoute: typeof codeCourseCourseLearnRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -134,6 +157,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof homeHomeCourseCourseRouteImport
       parentRoute: typeof homeHomeRoute
     }
+    '/(code)/course/$course/learn': {
+      id: '/(code)/course/$course/learn'
+      path: '/course/$course/learn'
+      fullPath: '/course/$course/learn'
+      preLoaderRoute: typeof codeCourseCourseLearnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -157,6 +187,7 @@ const rootRouteChildren: RootRouteChildren = {
   authSignInRoute: authSignInRoute,
   authSignUpRoute: authSignUpRoute,
   homeHomeRoute: homeHomeRouteWithChildren,
+  codeCourseCourseLearnRoute: codeCourseCourseLearnRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -60,7 +60,9 @@ function RouteComponent() {
                     )}
                     <ArrowRight/>
                   </h1>
+                  <Link to="/course/$course" params={{course: course.slug}}>
                   <Button>Course Details</Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>
