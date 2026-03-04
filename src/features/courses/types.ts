@@ -11,6 +11,10 @@ export type Course = {
     courseInfo?: CourseInfo[]
 }
 
+export type Lesson = {
+  name: string
+}
+
 export type CourseInfo = {
     question: string
     answer: string
@@ -19,13 +23,18 @@ export type CourseInfo = {
 
 export type Module = {
   name: string
+  lessons: Lesson[]
+  totalLessonsInModule: number
 }
+
+
 
 export type CourseWithModules = {
   id: string
   name: string
   slug: string
-  modules: Module[]
+  modules: Module[],
+  totalLessonsInCourse: number
 }
 
 export type CourseListItem = Omit<Course, "courseInfo">
