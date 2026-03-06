@@ -16,6 +16,7 @@ import { Route as homeHomeIndexRouteImport } from './routes/(home)/_home/index'
 import { Route as homeHomeCoursesRouteImport } from './routes/(home)/_home/courses'
 import { Route as homeHomeCourseCourseRouteImport } from './routes/(home)/_home/course/$course'
 import { Route as codeCourseCourseLearnRouteImport } from './routes/(code)/course/$course/learn'
+import { Route as codeCourseCourseLearnIndexRouteImport } from './routes/(code)/course/$course/learn/index'
 import { Route as codeCourseCourseLearnLessonRouteImport } from './routes/(code)/course/$course/learn/$lesson'
 
 const homeHomeRoute = homeHomeRouteImport.update({
@@ -52,6 +53,12 @@ const codeCourseCourseLearnRoute = codeCourseCourseLearnRouteImport.update({
   path: '/course/$course/learn',
   getParentRoute: () => rootRouteImport,
 } as any)
+const codeCourseCourseLearnIndexRoute =
+  codeCourseCourseLearnIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => codeCourseCourseLearnRoute,
+  } as any)
 const codeCourseCourseLearnLessonRoute =
   codeCourseCourseLearnLessonRouteImport.update({
     id: '/$lesson',
@@ -67,15 +74,16 @@ export interface FileRoutesByFullPath {
   '/course/$course/learn': typeof codeCourseCourseLearnRouteWithChildren
   '/course/$course': typeof homeHomeCourseCourseRoute
   '/course/$course/learn/$lesson': typeof codeCourseCourseLearnLessonRoute
+  '/course/$course/learn/': typeof codeCourseCourseLearnIndexRoute
 }
 export interface FileRoutesByTo {
   '/sign-in': typeof authSignInRoute
   '/sign-up': typeof authSignUpRoute
   '/courses': typeof homeHomeCoursesRoute
   '/': typeof homeHomeIndexRoute
-  '/course/$course/learn': typeof codeCourseCourseLearnRouteWithChildren
   '/course/$course': typeof homeHomeCourseCourseRoute
   '/course/$course/learn/$lesson': typeof codeCourseCourseLearnLessonRoute
+  '/course/$course/learn': typeof codeCourseCourseLearnIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/(code)/course/$course/learn': typeof codeCourseCourseLearnRouteWithChildren
   '/(home)/_home/course/$course': typeof homeHomeCourseCourseRoute
   '/(code)/course/$course/learn/$lesson': typeof codeCourseCourseLearnLessonRoute
+  '/(code)/course/$course/learn/': typeof codeCourseCourseLearnIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -98,15 +107,16 @@ export interface FileRouteTypes {
     | '/course/$course/learn'
     | '/course/$course'
     | '/course/$course/learn/$lesson'
+    | '/course/$course/learn/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/sign-in'
     | '/sign-up'
     | '/courses'
     | '/'
-    | '/course/$course/learn'
     | '/course/$course'
     | '/course/$course/learn/$lesson'
+    | '/course/$course/learn'
   id:
     | '__root__'
     | '/(auth)/sign-in'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/(code)/course/$course/learn'
     | '/(home)/_home/course/$course'
     | '/(code)/course/$course/learn/$lesson'
+    | '/(code)/course/$course/learn/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -177,6 +188,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof codeCourseCourseLearnRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(code)/course/$course/learn/': {
+      id: '/(code)/course/$course/learn/'
+      path: '/'
+      fullPath: '/course/$course/learn/'
+      preLoaderRoute: typeof codeCourseCourseLearnIndexRouteImport
+      parentRoute: typeof codeCourseCourseLearnRoute
+    }
     '/(code)/course/$course/learn/$lesson': {
       id: '/(code)/course/$course/learn/$lesson'
       path: '/$lesson'
@@ -205,10 +223,12 @@ const homeHomeRouteWithChildren = homeHomeRoute._addFileChildren(
 
 interface codeCourseCourseLearnRouteChildren {
   codeCourseCourseLearnLessonRoute: typeof codeCourseCourseLearnLessonRoute
+  codeCourseCourseLearnIndexRoute: typeof codeCourseCourseLearnIndexRoute
 }
 
 const codeCourseCourseLearnRouteChildren: codeCourseCourseLearnRouteChildren = {
   codeCourseCourseLearnLessonRoute: codeCourseCourseLearnLessonRoute,
+  codeCourseCourseLearnIndexRoute: codeCourseCourseLearnIndexRoute,
 }
 
 const codeCourseCourseLearnRouteWithChildren =

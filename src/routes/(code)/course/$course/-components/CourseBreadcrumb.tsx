@@ -16,7 +16,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuItem,
 } from '@/components/ui/dropdown-menu'
-import { ChevronDownIcon, ChevronRight } from 'lucide-react'
+import { ChevronDownIcon } from 'lucide-react'
 import { shorten } from '@/lib/utils'
 import { CourseWithModules } from '@/features/courses/types'
 

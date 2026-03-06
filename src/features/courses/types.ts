@@ -13,6 +13,7 @@ export type Course = {
 
 export type Lesson = {
   name: string
+  slug: string
 }
 
 export type CourseInfo = {
