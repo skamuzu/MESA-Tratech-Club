@@ -1,10 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { getLesson } from '@/features/courses/api'
-import { lazy, Suspense } from 'react'
-
-const LessonEditor = lazy(() =>
-  import('./-components/CodeEditor').then(m => ({ default: m.CodeEditor }))
-)
+import { CodeEditor } from './-components/CodeEditor'
 
 export const Route = createFileRoute('/(code)/course/$course/learn/$lesson')({
   component: RouteComponent,
@@ -17,13 +13,13 @@ export const Route = createFileRoute('/(code)/course/$course/learn/$lesson')({
 })
 
 function RouteComponent() {
-  const lesson = Route.useLoaderData()
 
   return (
-    <div style={{ margin: "1%" }}>
-      <Suspense fallback={<div>Loading editor...</div>}>
-        <LessonEditor />
-      </Suspense>
+    <div className='w-full flex items-center p-4'>
+      <div className='flex-1'>
+Hello
+      </div>
+        <CodeEditor/>
     </div>
   )
 }

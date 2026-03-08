@@ -12,6 +12,7 @@
     "check": "prettier --write . && eslint --fix"
   },
   "dependencies": {
+    "@codemirror/highlight": "^0.19.8",
     "@codemirror/lang-python": "^6.2.1",
     "@hookform/resolvers": "^5.2.2",
     "@react-oauth/google": "^0.13.4",
