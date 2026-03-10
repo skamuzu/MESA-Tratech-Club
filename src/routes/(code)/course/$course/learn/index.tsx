@@ -1,5 +1,5 @@
 import { createFileRoute, redirect } from '@tanstack/react-router'
-import { getCourseModules } from '@/features/courses/api'
+import { getCourseModules } from '@/features/coursework/api'
 
 export const Route = createFileRoute('/(code)/course/$course/learn/')({
   component: RouteComponent,

@@ -14,7 +14,48 @@ export type Course = {
 export type Lesson = {
   name: string
   slug: string
+  content: LessonContent
 }
+
+export type LessonContent = {
+  title: string
+  blocks: LessonContentBlock[]
+}
+
+type HeadingBlock = {
+  type: "heading"
+  text: string
+  level: number
+}
+
+type ParagraphBlock = {
+  type: "paragraph"
+  text: string
+}
+
+type ListBlock = {
+  type: "list"
+  items: string[]
+}
+
+type CodeBlock = {
+  type: "code"
+  code: string
+  language: "python"
+}
+
+type CalloutBlock = {
+  type: "callout"
+  text: string
+  variant: "info"
+}
+
+export type LessonContentBlock =
+  | HeadingBlock
+  | ParagraphBlock
+  | ListBlock
+  | CodeBlock
+  | CalloutBlock
 
 export type CourseInfo = {
     question: string

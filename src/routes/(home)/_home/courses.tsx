@@ -8,7 +8,7 @@ import {
 import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Link } from '@tanstack/react-router'
-import { getCourses } from '@/features/courses/api'
+import { getCourses } from '@/features/coursework/api'
 
 
 export const Route = createFileRoute('/(home)/_home/courses')({

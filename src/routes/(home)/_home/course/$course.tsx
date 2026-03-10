@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { getCourse } from '@/features/courses/api'
+import { getCourse } from '@/features/coursework/api'
 import { Link } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'

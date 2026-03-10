@@ -4,7 +4,7 @@ import Logo from "@/components/Logo";
 import { Accordion, AccordionContent, AccordionTrigger, AccordionItem } from "@/components/ui/accordion";
 import { InputGroup, InputGroupAddon,InputGroupInput } from "@/components/ui/input-group";
 import { Code2 } from "lucide-react";
-import type { CourseWithModules } from "@/features/courses/types";
+import type { CourseWithModules } from "@/features/coursework/types";
 import { Search } from "lucide-react";
 
 export default function CourseSidebar({course}: {course: CourseWithModules} ) {

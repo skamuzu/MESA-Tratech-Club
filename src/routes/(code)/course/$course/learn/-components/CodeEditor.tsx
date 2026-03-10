@@ -46,12 +46,12 @@ export function CodeEditor() {
     value: '',
     extensions: [python(), myTheme],
     theme: tokyoNight,
-    height: '75vh',
+    height: '90vh',
     placeholder: 'Enter script here',
   })
 
   return (
-  <div className='w-full border border-neutral-700 rounded-xl flex-1'>
+  <div className='w-full border  h-[90vh] rounded-xl flex-1'>
     <div className='flex items-center justify-between px-4 py-2 bg-neutral-800 rounded-t-xl'>
       <h1>Python</h1>
       <button className='bg-green-700 px-2 py-1 flex items-center gap-2 rounded-md  text-md'><Play className='size-4'/> <span className='font-semibold'>Run</span></button>

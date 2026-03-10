@@ -5,7 +5,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from '@/components/ui/sidebar'
-import { getCourseModules } from '@/features/courses/api'
+import { getCourseModules } from '@/features/coursework/api'
 import CourseSidebar from './-components/CourseSidebar'
 import CourseBreadcrumb from './-components/CourseBreadcrumb'
 import { ChevronLeft, ChevronRight } from 'lucide-react'

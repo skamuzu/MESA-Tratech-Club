@@ -18,7 +18,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { ChevronDownIcon } from 'lucide-react'
 import { shorten } from '@/lib/utils'
-import { CourseWithModules } from '@/features/courses/types'
+import { CourseWithModules } from '@/features/coursework/types'
 
 export default function CourseBreadcrumb({
   course,
