@@ -14,7 +14,7 @@ export type Course = {
 export type Lesson = {
   name: string
   slug: string
-  content: LessonContent
+  content: LessonContent 
 }
 
 export type LessonContent = {
